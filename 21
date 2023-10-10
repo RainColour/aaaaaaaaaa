@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <math.h>
+#include <string.h>
+#define MAX 100
+
+int main() {
+    float ValorComum = 10.00;
+    float ValorVip = 20.00;
+    int op;
+
+    do {
+        printf("\n\nPressione:\n\n1 - entrada\n\n2 - saida \n\n3 - cadastrar\n\n4 - sair\nEscolha a sua opção:");
+        scanf("%d", &op);
+
+        switch (op) {
+            case 1:
+                printf("entrada\n\n");
+                break;
+
+            case 2:
+                printf("saida\n\n");
+                break;
+
+            case 3:
+                printf("cadastrar cliente\n\n");
+                break;
+
+            case 4:
+                printf("Saindo do programa.\n");
+                break;
+
+            default:
+                printf("Opção inválida. Tente novamente.\n");
+                break;
+        }
+
+
+    } while (op != 4);
+
+    return 0;
+}
