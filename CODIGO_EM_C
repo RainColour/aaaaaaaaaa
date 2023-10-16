@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+#define MAX_VAGAS 10
+
+typedef struct {
+    bool estaOcupada;
+    char placa[10];
+} VagaEstacionamento;
+
+int main() {
+    VagaEstacionamento estacionamento[MAX_VAGAS] = {0};
+
+    while (1) {
+        int escolha;
+        printf("\n1. Estacionar\n2. Vagas\n3. Sair\n");
+        printf("Escolha uma opcao: ");
+        scanf("%d", &escolha);
+
+        switch (escolha) {
+            case 1:
+                int vagaVazia = -1;
+                for (int i = 0; i < MAX_VAGAS; i++) {
+                    if (!estacionamento[i].estaOcupada) {
+                        vagaVazia = i;
+                        break;
+                    }
+                }
+                if (vagaVazia != -1) {
+                    printf("Digite a placa do veiculo: ");
+                    scanf("%s", estacionamento[vagaVazia].placa);
+                    estacionamento[vagaVazia].estaOcupada = true;
+                    printf("Veiculo estacionado na vaga %d.\n", vagaVazia + 1);
+                } else {
+                    printf("Estacionamento Cheio\n");
+                }
+                break;
+
+            case 2:
+                printf("Vagas no estacionamento:\n");
+                for (int i = 0; i < MAX_VAGAS; i++) {
+                    printf("Vaga %d: %s\n", i + 1, estacionamento[i].estaOcupada ? estacionamento[i].placa : "Vazia");
+                }
+                break;
+
+            case 3:
+                printf("Saindo do programa.\n");
+                return 0;
+
+            default:
+                printf("Opcao invalida.\n");
+        }
+    }
+
+    return 0;
+}
