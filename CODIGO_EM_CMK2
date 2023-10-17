@@ -5,7 +5,7 @@
 #define MAX_TAMANHO_PLACA 10
 
 int main() {
-    char estacionamento[MAX_VAGAS][MAX_TAMANHO_PLACA] = {{0}}; // Inicialize todas as vagas com placas vazias
+    char estacionamento[MAX_VAGAS][MAX_TAMANHO_PLACA] = {{0}};
 
     while (1) {
         int escolha;
