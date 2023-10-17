@@ -1,0 +1,55 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_VAGAS 10
+#define MAX_TAMANHO_PLACA 10
+
+int main() {
+    char estacionamento[MAX_VAGAS][MAX_TAMANHO_PLACA] = {{0}}; // Inicialize todas as vagas com placas vazias
+
+    while (1) {
+        int escolha;
+        printf("\n1. Estacionar um carro\n2. Exibir status do estacionamento\n3. Sair\n");
+        printf("Digite sua escolha: ");
+        scanf("%d", &escolha);
+
+        switch (escolha) {
+            case 1:
+                int vagaVazia = -1;
+                for (int i = 0; i < MAX_VAGAS; i++) {
+                    if (strlen(estacionamento[i]) == 0) {
+                        vagaVazia = i;
+                        break;
+                    }
+                }
+                if (vagaVazia != -1) {
+                    printf("Digite a placa: ");
+                    scanf("%s", estacionamento[vagaVazia]);
+                    printf("Carro estacionado na vaga %d.\n", vagaVazia + 1);
+                } else {
+                    printf("Estacionamento lotado!\n");
+                }
+                break;
+
+            case 2:
+                printf("Status do Estacionamento:\n");
+                for (int i = 0; i < MAX_VAGAS; i++) {
+                    if (strlen(estacionamento[i]) == 0) {
+                        printf("Vaga %d: Vazia\n", i + 1);
+                    } else {
+                        printf("Vaga %d: %s\n", i + 1, estacionamento[i]);
+                    }
+                }
+                break;
+
+            case 3:
+                printf("Saindo do programa.\n");
+                return 0;
+
+            default:
+                printf("Escolha inválida. Tente novamente.\n");
+        }
+    }
+
+    return 0;
+}
